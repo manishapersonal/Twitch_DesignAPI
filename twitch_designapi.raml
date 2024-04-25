@@ -1,0 +1,114 @@
+#%RAML 1.0
+title: twitch_designapi
+version: 1.0
+baseUri: http://localhost:8081/api
+mediaType: application/json
+protocols:
+    - HTTP
+    - HTTPS
+types:
+    Contact:
+        properties:
+            id:
+                type: integer
+            first_name:
+                type: string
+            last_name:
+                type: string
+            email:
+                type: string
+            phone:
+                type: string
+            company:
+                type: string
+
+/contacts:
+    description: Resource for managing contacts
+    get:
+        description: Retrieves a list of all contacts
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: |
+                            [
+                                {
+                                    "id": 1,
+                                    "first_name": "Manisha",
+                                    "last_name": "Chotaliya",
+                                    "email": "manishapersonal@gmail.com",
+                                    "phone": "11111",
+                                    "company": "personal"
+                                },
+                                {
+                                    "id": 2,
+                                    "first_name": "Jay",
+                                    "last_name": "Vandara",
+                                    "email": "jaypersonal@gmail.com",
+                                    "phone": "22222",
+                                    "company": "personal"
+                                }
+
+                            ]
+    post:
+        description: Creates a new contact
+        body:
+            application/json:
+                type: Contact
+                example: |
+                    {
+                        "id": 1,
+                        "first_name": "Manisha",
+                        "last_name": "Chotaliya",
+                        "email": "manishapersonal@gmail.com",
+                        "phone": "11111",
+                        "company": "personal"
+                    }
+        responses:
+            200:
+                description: Success
+                body:
+                    application/json:
+                        type: Contact
+                        example: |
+                            {
+                                "id": 1,
+                                "first_name": "Manisha",
+                                "last_name": "Chotaliya",
+                                "email": "manishapersonal@gmail.com",
+                                "phone": "11111",
+                                "company": "personal"
+                            }
+            400:
+                description: Invalid input
+    
+    /{id}:
+        description: Resource for managing a single contact
+        uriParameters:
+            id:
+                description: The ID of a contact
+                type: integer
+                required: true
+        get:
+            description: Retrieve a single contact
+            responses:
+                200:
+                    body:
+                        application/json:
+                            type: Contact
+                            example: |
+                                {
+                                    "id": 1,
+                                    "first_name": "Manisha",
+                                    "last_name": "Chotaliya",
+                                    "email": "manishapersonal@gmail.com",
+                                    "phone": "11111",
+                                     "company": "personal"
+                                }
+
+
+
+                            
+                    
+                            
+            

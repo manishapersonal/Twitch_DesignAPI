@@ -1,0 +1,10 @@
+{
+  "main": "twitch_designapi.raml",
+  "name": "Twitch_DesignAPI",
+  "classifier": "raml",
+  "apiVersion": "v1",
+  "descriptorVersion": "1.0.0",
+  "groupId": null,
+  "assetId": "twitch_designapi",
+  "version": "1.0.0"
+}
